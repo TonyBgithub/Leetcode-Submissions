@@ -18,12 +18,17 @@ var numTeams = function(rating) {
     let count = 0;
     rating.forEach((item, idx) => {
         const first = item; 
+
+        //Nested loop that checks the if the first item is bigger than the second
+        //If it is, increase counter when third item is bigger than second.
+        //If it is not, increase counter when third item is smaller than second.
+        //That way the counter increases each time you get a valid triplet (slice of 3)
         for (let i = idx + 1, len = rating.length; len > i; i++ ) {
             const second = rating[i];
             if (first > second) {
-                count += rating.slice(i + 1).filter(item => item < second).length;
+                count += rating.slice(i + 1).filter(thirdItem => thirdItem < second).length;
             } else {
-                count += rating.slice(i + 1).filter(item => item > second).length;
+                count += rating.slice(i + 1).filter(thirdItem => thirdItem > second).length;
             }  
         }
     }); 
