@@ -29,3 +29,5 @@ function getCount(str) {
         break;
     }
   }
+
+}
